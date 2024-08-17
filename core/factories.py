@@ -1,6 +1,7 @@
 import factory
 from factory.django import DjangoModelFactory
 
+from payments.models import ElectricityBill, Payment
 from properties.models import Property, Rooms
 from users.models import CustomUser, LandLoard, Tenant
 
@@ -45,3 +46,17 @@ class RoomsFactory(DjangoModelFactory):
 
     property = factory.SubFactory(PropertyFactory)
     tenant = factory.SubFactory(TenantFactory)
+    rent = factory.Faker('random_number', digits=4)
+
+class PaymentFactory(DjangoModelFactory):
+    class Meta:
+        model = Payment
+
+    room = factory.SubFactory(RoomsFactory)
+
+class ElectricityBillFactory(DjangoModelFactory):
+    class Meta:
+        model = ElectricityBill
+
+    room = factory.SubFactory(RoomsFactory)
+    consumption = factory.Faker('random_number', digits=3)

@@ -1,5 +1,6 @@
 from django.contrib import admin
 
+from payments.admin import AdminRentInline
 from properties.models import Property, Rooms
 
 
@@ -10,3 +11,4 @@ class AdminProperty(admin.ModelAdmin):
 @admin.register(Rooms)
 class AdminRooms(admin.ModelAdmin):
     list_display = ("room_no", 'tenant', 'capacity')
+    inlines = [AdminRentInline]

@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     # User-defined apps
     "core",
     "users",
-    # 'payments',
+    'payments',
     "properties",
     "tenants",
     # Third-party apps

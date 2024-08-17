@@ -33,8 +33,9 @@ class Rooms(models.Model):
 
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
     room_no = models.CharField(max_length=20)
-    tenant = models.OneToOneField(Tenant, on_delete=models.PROTECT, null=True, blank=True)
+    tenant = models.OneToOneField(Tenant, on_delete=models.CASCADE, null=True, blank=True)
     capacity = models.IntegerField(default=3)
+    rent = models.IntegerField()
 
     class Meta:
         verbose_name = _("Room")

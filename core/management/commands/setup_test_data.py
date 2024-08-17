@@ -5,12 +5,15 @@ from django.core.management.base import BaseCommand
 
 from core.factories import (
     CustomUserFactory,
+    ElectricityBillFactory,
     LandLoardFactory,
+    PaymentFactory,
     PropertyFactory,
     RoomsFactory,
     TenantFactory,
 )
-from properties.models import Property
+from payments.models import Payment
+from properties.models import Property, Rooms
 from users.models import CustomUser, LandLoard, Tenant
 
 NUM_USERS = 50
@@ -22,7 +25,7 @@ class Command(BaseCommand):
     @transaction.atomic
     def handle(self, *args, **kwargs):
         self.stdout.write("Deleting old data...")
-        models = [CustomUser, LandLoard, Tenant, Property]
+        models = [CustomUser, LandLoard, Tenant, Property, Rooms, Payment]
         for m in models:
             m.objects.exclude(id=456).delete()
 
@@ -52,8 +55,14 @@ class Command(BaseCommand):
             properties.append(property)
 
         # Add some rooms
+        rooms = []
         for index, property in enumerate(properties, start=1):
-            # property_type = random.choice([x[0] for x in Property.PropertyType.choices])
             room = RoomsFactory(property=property)
             room.room_no = index
             room.save()
+            rooms.append(room)
+        
+        # Add payments for each rooms
+        for room in rooms:
+            PaymentFactory(room=room)
+            ElectricityBillFactory(room=room)
