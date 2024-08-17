@@ -17,6 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import include, path
+from debug_toolbar.toolbar import debug_toolbar_urls
 
 admin.site.site_title = "Reside site admin"
 admin.site.site_header = "Reside administration"
@@ -25,4 +26,4 @@ admin.site.index_title = "Reside administration"
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("tenants/", include("tenants.urls")),
-]
+] + debug_toolbar_urls()
