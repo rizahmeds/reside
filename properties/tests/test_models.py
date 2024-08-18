@@ -1,12 +1,18 @@
 from django.test import TestCase
 
-from users.models import LandLoard, Tenant
+from users.models import CustomUser, LandLoard, Tenant
 from properties.models import Property, Rooms
 
 class TestRooms(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.land_loard = LandLoard.objects.create(name="John Doe")
+        land_loard = CustomUser.objects.create_user(
+            email="landloard@example.com",
+            password="password123",
+            role=CustomUser.Types.LAND_LOARD,
+            phone_number="+1234567890"
+        )
+        cls.land_loard = LandLoard.objects.create(user=land_loard)
         cls.property = Property.objects.create(
             land_loard=cls.land_loard,
             property_type=Property.PropertyType.ROOMS,
@@ -16,7 +22,13 @@ class TestRooms(TestCase):
             country="Anycountry",
             zip_code="12345"
         )
-        cls.tenant = Tenant.objects.create(name="Jane Smith")
+        tenant = CustomUser.objects.create_user(
+            email="tenant@example.com",
+            password="password123",
+            role=CustomUser.Types.TENANT,
+            phone_number="+0987654321"
+        )
+        cls.tenant = Tenant.objects.create(user=tenant)
         cls.room = Rooms.objects.create(
             property=cls.property,
             room_no="101",

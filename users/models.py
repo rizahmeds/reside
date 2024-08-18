@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 
 from phonenumber_field.modelfields import PhoneNumberField
 
-from .manager import LandLoardManager, TenantManager, UsersManager
+from .manager import LandLoardManager, TenantManager, CustomUserManager
 
 
 class CustomUser(AbstractUser):
@@ -27,7 +27,7 @@ class CustomUser(AbstractUser):
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
-    objects = UsersManager()
+    objects = CustomUserManager()
 
     class Meta:
         verbose_name = _("User")

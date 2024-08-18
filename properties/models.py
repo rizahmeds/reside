@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from properties.manager import PropertyManager, RoomsManager
 from users.models import LandLoard, Tenant
 
 
@@ -21,6 +22,8 @@ class Property(models.Model):
     country = models.CharField(max_length=20)
     zip_code = models.CharField("ZIP / Postal code", max_length=12)
 
+    objects = PropertyManager()
+
     class Meta:
         verbose_name = _("Property")
         verbose_name_plural = _("Properties")
@@ -36,6 +39,8 @@ class Rooms(models.Model):
     tenant = models.OneToOneField(Tenant, on_delete=models.CASCADE, null=True, blank=True)
     capacity = models.IntegerField(default=3)
     base_rent = models.IntegerField()
+
+    objects = RoomsManager()
 
     class Meta:
         verbose_name = _("Room")
