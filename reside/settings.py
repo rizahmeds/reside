@@ -37,18 +37,22 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
     # User-defined apps
     "core",
     "users",
     # 'payments',
     "properties",
     "tenants",
+
     # Third-party apps
     "phonenumber_field",
     "django_seed",
+    "debug_toolbar",
 ]
 
 MIDDLEWARE = [
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -136,3 +140,7 @@ AUTH_USER_MODEL = "users.CustomUser"
 PHONENUMBER_DEFAULT_REGION = "IN"  # Prefered Country
 
 USE_TZ = False
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
