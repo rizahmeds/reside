@@ -1,14 +1,15 @@
 from django.test import TestCase
-from django.utils import timezone
-from datetime import date, timedelta
+from datetime import date
 
 from payments.models import Payment, ExpenseCategory, Expense, PaymentDetail
-from properties.models import Rooms
+from properties.factories import RoomsFactory
+
 
 class TestPayment(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.room = Rooms.objects.create(name="Room 1")
+        # cls.room = Rooms.objects.create(name="Room 1")
+        cls.room = RoomsFactory()
         cls.payment = Payment.objects.create(
             room=cls.room,
             amount=1000,
@@ -36,7 +37,7 @@ class TestExpenseCategory(TestCase):
 class TestExpense(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.room = Rooms.objects.create(name="Room 1")
+        cls.room = RoomsFactory()
         cls.category = ExpenseCategory.objects.create(name="Utilities")
         cls.expense = Expense.objects.create(
             room=cls.room,
@@ -56,7 +57,7 @@ class TestExpense(TestCase):
 class TestPaymentDetail(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.room = Rooms.objects.create(name="Room 1")
+        cls.room = RoomsFactory()
         cls.payment = Payment.objects.create(
             room=cls.room,
             amount=1000,
