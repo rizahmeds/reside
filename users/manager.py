@@ -1,7 +1,8 @@
 from django.contrib.auth.base_user import BaseUserManager
+from django.contrib.auth.hashers import make_password
 
 
-class UsersManager(BaseUserManager):
+class CustomUserManager(BaseUserManager):
     def create_user(self, email, password, **extra_fields):
         """
         Creates and saves a User with the given email and password.
@@ -11,8 +12,8 @@ class UsersManager(BaseUserManager):
 
         user = self.model(email=self.normalize_email(email), **extra_fields)
 
-        user.set_password(password)
-        user.save()
+        user.password = make_password(password)
+        user.save(using=self._db)
         return user
 
     def create_superuser(self, email, password, **extra_fields):
@@ -36,8 +37,13 @@ class LandLoardManager(BaseUserManager):
         results = super().get_queryset()
         return results
 
+    def create_land_oard(self):
+        pass
 
 class TenantManager(BaseUserManager):
     def get_queryset(self):
         results = super().get_queryset()
         return results
+
+    def create_tenant(self):
+        pass
