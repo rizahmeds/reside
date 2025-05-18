@@ -24,6 +24,11 @@ dependencies = [
     { name = "toposort" },
 ]
 
+[package.dev-dependencies]
+dev = [
+    { name = "ruff" },
+]
+
 [package.metadata]
 requires-dist = [
     { name = "asgiref", specifier = "==3.8.1" },
@@ -42,6 +47,9 @@ requires-dist = [
     { name = "sqlparse", specifier = "==0.5.1" },
     { name = "toposort", specifier = "==1.10" },
 ]
+
+[package.metadata.requires-dev]
+dev = [{ name = "ruff", specifier = ">=0.6.1" }]
 
 [[package]]
 name = "asgiref"
