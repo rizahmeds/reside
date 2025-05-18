@@ -8,7 +8,8 @@ from properties.models import Property, Rooms
 class AdminProperty(admin.ModelAdmin):
     list_display = ("land_loard", "property_type")
 
+
 @admin.register(Rooms)
 class AdminRooms(admin.ModelAdmin):
-    list_display = ("room_no", 'tenant', 'capacity')
+    list_display = ("room_no", "tenant", "capacity")
     inlines = [AdminRentInline]

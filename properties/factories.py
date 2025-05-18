@@ -4,6 +4,7 @@ from factory.django import DjangoModelFactory
 from users.factories import LandLoardFactory, TenantFactory
 from properties.models import Property, Rooms
 
+
 class PropertyFactory(DjangoModelFactory):
     class Meta:
         model = Property
@@ -22,4 +23,4 @@ class RoomsFactory(DjangoModelFactory):
 
     property = factory.SubFactory(PropertyFactory)
     tenant = factory.SubFactory(TenantFactory)
-    base_rent = factory.Faker('random_number', digits=4)
+    base_rent = factory.Faker("random_number", digits=4)

@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.utils import timezone
 from users.models import CustomUser
 
+
 class TestCustomUser(TestCase):
     @classmethod
     def setUpTestData(cls):
@@ -9,13 +10,13 @@ class TestCustomUser(TestCase):
             email="landloard@example.com",
             password="password123",
             role=CustomUser.Types.LAND_LOARD,
-            phone_number="+1234567890"
+            phone_number="+1234567890",
         )
         cls.tenant_user = CustomUser.objects.create_user(
             email="tenant@example.com",
             password="password123",
             role=CustomUser.Types.TENANT,
-            phone_number="+0987654321"
+            phone_number="+0987654321",
         )
 
     def test_custom_user_fields(self):
@@ -39,7 +40,6 @@ class TestCustomUser(TestCase):
         self.assertEqual(self.landloard_user.role, CustomUser.Types.LAND_LOARD)
         self.assertEqual(self.tenant_user.role, CustomUser.Types.TENANT)
         default_user = CustomUser.objects.create_user(
-            email="default@example.com",
-            password="password123"
+            email="default@example.com", password="password123"
         )
         self.assertEqual(default_user.role, CustomUser.Types.LAND_LOARD)

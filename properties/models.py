@@ -33,10 +33,11 @@ class Property(models.Model):
 
 
 class Rooms(models.Model):
-
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
     room_no = models.CharField(max_length=20)
-    tenant = models.OneToOneField(Tenant, on_delete=models.CASCADE, null=True, blank=True)
+    tenant = models.OneToOneField(
+        Tenant, on_delete=models.CASCADE, null=True, blank=True
+    )
     capacity = models.IntegerField(default=3)
     base_rent = models.IntegerField()
 

@@ -25,7 +25,7 @@ SECRET_KEY = "*"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -37,14 +37,12 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     # User-defined apps
     "core",
     "users",
-    'payments',
+    "payments",
     "properties",
     "tenants",
-
     # Third-party apps
     "phonenumber_field",
     "django_seed",

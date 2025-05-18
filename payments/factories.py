@@ -11,9 +11,9 @@ class PaymentFactory(DjangoModelFactory):
         model = Payment
 
     room = factory.SubFactory(RoomsFactory)
-    amount = factory.Faker('random_number', digits=4)
-    payment_date = factory.Faker('date_time')
-    for_month = factory.Faker('date')
+    amount = factory.Faker("random_number", digits=4)
+    payment_date = factory.Faker("date_time")
+    for_month = factory.Faker("date")
     is_paid = random.choice([True, False])
 
 
@@ -25,15 +25,13 @@ class ExpenseCategoryFactory(DjangoModelFactory):
 class ExpenseFactory(DjangoModelFactory):
     class Meta:
         model = Expense
-    
-    amount = factory.Faker('random_number', digits=4)
-    date = factory.Faker('date')
 
+    amount = factory.Faker("random_number", digits=4)
+    date = factory.Faker("date")
 
 
 class PaymentDetailFactory(DjangoModelFactory):
     class Meta:
         model = PaymentDetail
-    
-    payment = factory.SubFactory(PaymentFactory)
 
+    payment = factory.SubFactory(PaymentFactory)

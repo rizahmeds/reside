@@ -5,22 +5,35 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('properties', '0003_rename_land_lord_property_land_loard'),
+        ("properties", "0003_rename_land_lord_property_land_loard"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Rooms',
+            name="Rooms",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('room_no', models.CharField(max_length=20)),
-                ('property', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='properties.property')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("room_no", models.CharField(max_length=20)),
+                (
+                    "property",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="properties.property",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Room',
-                'verbose_name_plural': 'Rooms',
+                "verbose_name": "Room",
+                "verbose_name_plural": "Rooms",
             },
         ),
     ]

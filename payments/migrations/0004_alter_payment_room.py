@@ -5,16 +5,17 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('payments', '0003_rename_rent_payment_alter_payment_options'),
-        ('properties', '0008_rooms_rent'),
+        ("payments", "0003_rename_rent_payment_alter_payment_options"),
+        ("properties", "0008_rooms_rent"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='payment',
-            name='room',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='properties.rooms'),
+            model_name="payment",
+            name="room",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to="properties.rooms"
+            ),
         ),
     ]

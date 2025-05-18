@@ -6,31 +6,46 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('payments', '0004_alter_payment_room'),
-        ('properties', '0008_rooms_rent'),
+        ("payments", "0004_alter_payment_room"),
+        ("properties", "0008_rooms_rent"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='payment',
-            name='created',
-            field=models.DateTimeField(auto_now_add=True, default=django.utils.timezone.now),
+            model_name="payment",
+            name="created",
+            field=models.DateTimeField(
+                auto_now_add=True, default=django.utils.timezone.now
+            ),
             preserve_default=False,
         ),
         migrations.CreateModel(
-            name='ElectricityBill',
+            name="ElectricityBill",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('consumption', models.IntegerField()),
-                ('rate', models.IntegerField(default=10)),
-                ('created', models.DateTimeField(auto_now_add=True)),
-                ('room', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='properties.rooms')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("consumption", models.IntegerField()),
+                ("rate", models.IntegerField(default=10)),
+                ("created", models.DateTimeField(auto_now_add=True)),
+                (
+                    "room",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="properties.rooms",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Electricity Bill',
-                'verbose_name_plural': 'Electricity Bills',
+                "verbose_name": "Electricity Bill",
+                "verbose_name_plural": "Electricity Bills",
             },
         ),
     ]

@@ -5,23 +5,36 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
-        ('properties', '0006_rooms_capacity'),
+        ("properties", "0006_rooms_capacity"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Rent',
+            name="Rent",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('room', models.OneToOneField(on_delete=django.db.models.deletion.PROTECT, to='properties.rooms')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "room",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to="properties.rooms",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Rent',
-                'verbose_name_plural': 'Rents',
+                "verbose_name": "Rent",
+                "verbose_name_plural": "Rents",
             },
         ),
     ]

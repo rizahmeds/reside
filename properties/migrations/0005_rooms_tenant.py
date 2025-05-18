@@ -5,16 +5,20 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('properties', '0004_rooms'),
-        ('users', '0002_alter_customuser_role'),
+        ("properties", "0004_rooms"),
+        ("users", "0002_alter_customuser_role"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='rooms',
-            name='tenant',
-            field=models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.PROTECT, to='users.tenant'),
+            model_name="rooms",
+            name="tenant",
+            field=models.OneToOneField(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.PROTECT,
+                to="users.tenant",
+            ),
         ),
     ]

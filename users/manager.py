@@ -40,6 +40,7 @@ class LandLoardManager(BaseUserManager):
     def create_land_oard(self):
         pass
 
+
 class TenantManager(BaseUserManager):
     def get_queryset(self):
         results = super().get_queryset()

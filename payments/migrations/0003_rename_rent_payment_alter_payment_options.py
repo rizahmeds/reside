@@ -4,19 +4,18 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('payments', '0002_alter_rent_room'),
-        ('properties', '0008_rooms_rent'),
+        ("payments", "0002_alter_rent_room"),
+        ("properties", "0008_rooms_rent"),
     ]
 
     operations = [
         migrations.RenameModel(
-            old_name='Rent',
-            new_name='Payment',
+            old_name="Rent",
+            new_name="Payment",
         ),
         migrations.AlterModelOptions(
-            name='payment',
-            options={'verbose_name': 'Payment', 'verbose_name_plural': 'Payments'},
+            name="payment",
+            options={"verbose_name": "Payment", "verbose_name_plural": "Payments"},
         ),
     ]

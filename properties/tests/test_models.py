@@ -3,6 +3,7 @@ from django.test import TestCase
 from users.models import CustomUser, LandLoard, Tenant
 from properties.models import Property, Rooms
 
+
 class TestRooms(TestCase):
     @classmethod
     def setUpTestData(cls):
@@ -10,7 +11,7 @@ class TestRooms(TestCase):
             email="landloard@example.com",
             password="password123",
             role=CustomUser.Types.LAND_LOARD,
-            phone_number="+1234567890"
+            phone_number="+1234567890",
         )
         cls.land_loard = LandLoard.objects.create(user=land_loard)
         cls.property = Property.objects.create(
@@ -20,13 +21,13 @@ class TestRooms(TestCase):
             city="Anytown",
             state="Anystate",
             country="Anycountry",
-            zip_code="12345"
+            zip_code="12345",
         )
         tenant = CustomUser.objects.create_user(
             email="tenant@example.com",
             password="password123",
             role=CustomUser.Types.TENANT,
-            phone_number="+0987654321"
+            phone_number="+0987654321",
         )
         cls.tenant = Tenant.objects.create(user=tenant)
         cls.room = Rooms.objects.create(
@@ -34,7 +35,7 @@ class TestRooms(TestCase):
             room_no="101",
             tenant=cls.tenant,
             capacity=2,
-            base_rent=500
+            base_rent=500,
         )
 
     def test_room_str(self):

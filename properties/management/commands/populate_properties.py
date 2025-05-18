@@ -22,10 +22,14 @@ class Command(BaseCommand):
         # Add dummy properties
         for land_loard in LandLoard.objects.all():
             property_type = random.choice([x[0] for x in Property.PropertyType.choices])
-            property = PropertyFactory(property_type=property_type, land_loard=land_loard)
+            property = PropertyFactory(
+                property_type=property_type, land_loard=land_loard
+            )
 
         # Add dummy rooms
-        for property in Property.objects.filter(property_type=Property.PropertyType.ROOMS):
+        for property in Property.objects.filter(
+            property_type=Property.PropertyType.ROOMS
+        ):
             room = RoomsFactory(property=property)
             room.room_no = property.id
             room.save()
