@@ -1,0 +1,18 @@
+asgiref==3.8.1
+coverage==7.6.1
+django==5.1
+django-debug-toolbar==4.4.6
+django-phonenumber-field==8.0.0
+django-seed==0.3.1
+factory-boy==3.3.0
+faker==26.3.0
+jsonfield==3.1.0
+phonenumberslite==8.13.42
+pillow==11.3.0
+pip==25.0
+python-dateutil==2.9.0.post0
+-e file:///Users/rizz/Dev/rizahmeds/reside
+ruff==0.12.4
+six==1.16.0
+sqlparse==0.5.1
+toposort==1.10

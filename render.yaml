@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: reside
+    env: python
+    plan: free
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --no-input
+      python manage.py migrate
+    startCommand: gunicorn reside.wsgi
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: reside-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
+      - key: PYTHON_VERSION
+        value: 3.13.2
+
+  - type: pserv
+    name: reside-db
+    env: postgres
+    plan: free
+    postgresMajorVersion: 13
