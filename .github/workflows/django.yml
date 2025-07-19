@@ -3,9 +3,9 @@ name: Django CI
 on:
   workflow_dispatch: null
   push:
-    branches: [ "master" ]
+    branches: [ "man" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "man" ]
 
 jobs:
   build:
@@ -13,7 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SECRET_KEY: ${{ secrets.SECRET_KEY }}
-      DATABASE_URL: ${{ secrets.DATABASE_URL }}
     strategy:
       matrix:
         python-version: [3.13]
