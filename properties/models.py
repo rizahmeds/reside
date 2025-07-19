@@ -49,3 +49,41 @@ class Rooms(models.Model):
 
     def __str__(self):
         return str(self.room_no)
+
+
+class ElectricityReading(models.Model):
+    room = models.ForeignKey(
+        Rooms, on_delete=models.CASCADE, related_name="electricity_readings"
+    )
+    reading = models.PositiveIntegerField()
+    reading_date = models.DateField()
+    unit_price = models.DecimalField(max_digits=6, decimal_places=2, default=10.00)
+
+    class Meta:
+        verbose_name = _("Electricity Reading")
+        verbose_name_plural = _("Electricity Readings")
+        unique_together = ("room", "reading_date")
+        ordering = ["-reading_date"]
+
+    def __str__(self):
+        return f"Reading for Room {self.room.room_no} on {self.reading_date}"
+
+    def get_previous_reading(self):
+        return (
+            ElectricityReading.objects.filter(
+                room=self.room, reading_date__lt=self.reading_date
+            )
+            .order_by("-reading_date")
+            .first()
+        )
+
+    @property
+    def consumed_units(self):
+        previous_reading = self.get_previous_reading()
+        if previous_reading:
+            return self.reading - previous_reading.reading
+        return self.reading
+
+    @property
+    def bill_amount(self):
+        return self.consumed_units * self.unit_price

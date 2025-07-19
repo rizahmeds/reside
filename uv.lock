@@ -10,15 +10,10 @@ dependencies = [
     { name = "asgiref" },
     { name = "coverage" },
     { name = "django" },
-    { name = "django-debug-toolbar" },
     { name = "django-phonenumber-field" },
-    { name = "django-seed" },
-    { name = "factory-boy" },
-    { name = "faker" },
     { name = "jsonfield" },
     { name = "phonenumberslite" },
     { name = "python-dateutil" },
-    { name = "ruff" },
     { name = "six" },
     { name = "sqlparse" },
     { name = "toposort" },
@@ -26,6 +21,10 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
+    { name = "django-debug-toolbar" },
+    { name = "django-seed" },
+    { name = "factory-boy" },
+    { name = "faker" },
     { name = "ruff" },
 ]
 
@@ -34,22 +33,23 @@ requires-dist = [
     { name = "asgiref", specifier = "==3.8.1" },
     { name = "coverage", specifier = "==7.6.1" },
     { name = "django", specifier = "==5.1" },
-    { name = "django-debug-toolbar", specifier = "==4.4.6" },
     { name = "django-phonenumber-field", specifier = "==8.0.0" },
-    { name = "django-seed", specifier = "==0.3.1" },
-    { name = "factory-boy", specifier = "==3.3.0" },
-    { name = "faker", specifier = "==26.3.0" },
     { name = "jsonfield", specifier = "==3.1.0" },
     { name = "phonenumberslite", specifier = "==8.13.42" },
     { name = "python-dateutil", specifier = "==2.9.0.post0" },
-    { name = "ruff", specifier = "==0.6.1" },
     { name = "six", specifier = "==1.16.0" },
     { name = "sqlparse", specifier = "==0.5.1" },
     { name = "toposort", specifier = "==1.10" },
 ]
 
 [package.metadata.requires-dev]
-dev = [{ name = "ruff", specifier = ">=0.6.1" }]
+dev = [
+    { name = "django-debug-toolbar", specifier = "==4.4.6" },
+    { name = "django-seed", specifier = "==0.3.1" },
+    { name = "factory-boy", specifier = "==3.3.0" },
+    { name = "faker", specifier = "==26.3.0" },
+    { name = "ruff", specifier = ">=0.6.1" },
+]
 
 [[package]]
 name = "asgiref"
