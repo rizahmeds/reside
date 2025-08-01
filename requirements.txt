@@ -1,6 +1,6 @@
 asgiref==3.8.1
 coverage==7.6.1
-django==5.1.4
+django==5.1.10
 django-debug-toolbar==4.4.6
 django-phonenumber-field==8.0.0
 django-seed==0.3.1
