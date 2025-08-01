@@ -5,7 +5,7 @@ requires-python = ">=3.13"
 dependencies = [
     "asgiref==3.8.1",
     "coverage==7.6.1",
-    "django==5.1",
+    "django==5.1.10",
     "django-phonenumber-field==8.0.0",
     "jsonfield==3.1.0",
     "phonenumberslite==8.13.42",
