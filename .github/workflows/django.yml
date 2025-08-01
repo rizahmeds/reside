@@ -1,4 +1,6 @@
 name: Django CI
+permissions:
+  contents: read
 
 on:
   workflow_dispatch: null
